@@ -24,6 +24,14 @@ public class Block {
     private long productionMW;
     private BigDecimal price;
 
+    public Block(Plant plant, Date startTime, Date endTime, long productionMW, BigDecimal price) {
+        this.plant = plant;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.productionMW = productionMW;
+        this.price = price;
+    }
+
     public UUID getBlockId() {
         return blockId;
     }

@@ -17,6 +17,12 @@ public class Offer {
     @OneToMany(mappedBy = "offer")
     List<Block> blocks;
 
+    public Offer(String name, Market market, List<Block> blocks) {
+        this.name = name;
+        this.market = market;
+        this.blocks = blocks;
+    }
+
     public UUID getId() {
         return id;
     }

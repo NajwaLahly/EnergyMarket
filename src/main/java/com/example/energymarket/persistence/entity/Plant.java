@@ -19,6 +19,11 @@ public class Plant {
         return id;
     }
 
+    public Plant(PlantType type, String name) {
+        this.type = type;
+        this.name = name;
+    }
+
     public void setId(UUID id) {
         this.id = id;
     }
