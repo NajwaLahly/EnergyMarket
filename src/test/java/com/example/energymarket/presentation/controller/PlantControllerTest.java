@@ -24,9 +24,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(PlantController.class)
 public class PlantControllerTest {
-
     @MockBean
     PlantServicePort plantService;
     @Autowired
@@ -63,13 +62,11 @@ public class PlantControllerTest {
     @DisplayName("should get plants that sell on market with get request")
     void shouldFindByMarket() throws Exception {
         //Arrange
-        PlantBO plantBO = new PlantBO("plant-1", PlantType.SOLAR);
-        PlantDto plantDto = new PlantDto("plant-1", PlantType.SOLAR);
-        List<PlantBO> marketPlants = List.of(plantBO);
-        List<PlantDto> marketPlantsDto = List.of(plantDto);
+        List<PlantBO> marketPlants = List.of(new PlantBO("plant-1", PlantType.SOLAR));
+        List<PlantDto> marketPlantsDto = List.of(new PlantDto("plant-1", PlantType.SOLAR));
         when(plantService.findByMarket(Market.PRIMARY)).thenReturn(marketPlants);
-        when(boDtoMapper.toPlantDto(any(PlantBO.class))).thenReturn(plantDto);
-        when(boDtoMapper.toPlantBO(any(PlantDto.class))).thenReturn(plantBO);
+        when(boDtoMapper.toPlantDto(any(PlantBO.class))).thenReturn(new PlantDto("plant-1", PlantType.SOLAR));
+        when(boDtoMapper.toPlantBO(any(PlantDto.class))).thenReturn(new PlantBO("plant-1", PlantType.SOLAR));
 
         //Act
         mockMvc.perform(get("/plants/{market}", Market.PRIMARY))
@@ -80,4 +77,5 @@ public class PlantControllerTest {
         verify(plantService, times(1)).findByMarket(Market.PRIMARY);
         verifyNoMoreInteractions(plantService);
     }
+
 }

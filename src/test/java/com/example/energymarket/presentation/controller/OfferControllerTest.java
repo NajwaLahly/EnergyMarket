@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(OfferController.class)
 public class OfferControllerTest {
     @MockBean
     OfferServicePort offerService;
@@ -64,10 +64,8 @@ public class OfferControllerTest {
     @DisplayName("should get offers that sell on market with get request")
     void shouldFindByMarket() throws Exception {
         //Arrange
-        OfferBO offerBO = new OfferBO("offer-1", Market.PRIMARY, new ArrayList<BlockBO>());
-        OfferDto offerDto = new OfferDto("offer-1", Market.PRIMARY, new ArrayList<BlockDto>());
-        List<OfferBO> marketOffers = List.of(offerBO);
-        List<OfferDto> marketOffersDto = List.of(offerDto);
+        List<OfferBO> marketOffers = List.of(new OfferBO("offer-1", Market.PRIMARY, new ArrayList<BlockBO>()));
+        List<OfferDto> marketOffersDto = List.of(new OfferDto("offer-1", Market.PRIMARY, new ArrayList<BlockDto>()));
         when(offerService.findByMarket(any(Market.class))).thenReturn(marketOffers);
         when(boDtoMapper.toOfferDto(any(OfferBO.class))).thenReturn(new OfferDto("offer-1", Market.PRIMARY, new ArrayList<BlockDto>()));
         when(boDtoMapper.toOfferBO(any(OfferDto.class))).thenReturn(new OfferBO("offer-1", Market.PRIMARY, new ArrayList<BlockBO>()));
@@ -80,4 +78,5 @@ public class OfferControllerTest {
         verify(offerService, times(1)).findByMarket(Market.PRIMARY);
         verifyNoMoreInteractions(offerService);
     }
+
 }
