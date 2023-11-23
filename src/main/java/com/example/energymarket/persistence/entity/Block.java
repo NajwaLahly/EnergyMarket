@@ -1,7 +1,6 @@
 package com.example.energymarket.persistence.entity;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -32,7 +31,8 @@ public class Block {
         this.price = price;
     }
 
-    public Block(){}
+    public Block() {
+    }
 
     public UUID getBlockId() {
         return blockId;

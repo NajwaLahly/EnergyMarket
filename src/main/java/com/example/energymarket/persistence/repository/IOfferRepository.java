@@ -11,6 +11,7 @@ import java.util.UUID;
 
 public interface IOfferRepository extends CrudRepository<Offer, UUID> {
     List<Offer> findByMarket(Market market);
+
     @Query("SELECT DISTINCT b.plant FROM Offer o JOIN o.blocks b WHERE o.market = :market")
     List<Plant> findDistinctPlantsByMarket(Market market);
 }

@@ -8,5 +8,6 @@ import java.util.List;
 public interface OfferServicePort {
 
     OfferBO add(OfferBO offerBO);
+
     List<OfferBO> findByMarket(Market market);
 }

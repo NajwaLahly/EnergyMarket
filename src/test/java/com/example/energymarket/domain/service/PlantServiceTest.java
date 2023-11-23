@@ -15,7 +15,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @SpringBootTest
@@ -32,7 +31,7 @@ public class PlantServiceTest {
 
     @Test
     @DisplayName("should call repository to add new plant")
-    void shouldAdd(){
+    void shouldAdd() {
         //Arrange
         PlantBO plant = new PlantBO("plant-1", PlantType.SOLAR);
         when(plantRepository.add(plant)).thenReturn(plant);
@@ -47,7 +46,7 @@ public class PlantServiceTest {
 
     @Test
     @DisplayName("should call repository to get all plants that sell in a market")
-    void shouldFindByMarket(){
+    void shouldFindByMarket() {
         //Arrange
         List<PlantBO> primaryMarketPlants = List.of(new PlantBO("plant-1", PlantType.SOLAR));
         when(offerRepository.findDistinctPlantsByMarket(Market.PRIMARY)).thenReturn(primaryMarketPlants);

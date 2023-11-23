@@ -8,5 +8,6 @@ import java.util.List;
 public interface PlantServicePort {
 
     PlantBO add(PlantBO plantBO);
+
     List<PlantBO> findByMarket(Market market);
 }

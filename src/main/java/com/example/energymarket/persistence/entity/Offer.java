@@ -23,7 +23,8 @@ public class Offer {
         this.blocks = blocks;
     }
 
-    public Offer(){}
+    public Offer() {
+    }
 
     public UUID getId() {
         return id;
