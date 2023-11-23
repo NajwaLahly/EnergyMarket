@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
-@EntityScan
+@Entity
 @Table(name = "Block")
 public class Block {
     @Id
