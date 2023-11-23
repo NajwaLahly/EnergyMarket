@@ -6,10 +6,11 @@ import com.example.energymarket.domain.pojo.PlantBO;
 import com.example.energymarket.persistence.entity.Block;
 import com.example.energymarket.persistence.entity.Offer;
 import com.example.energymarket.persistence.entity.Plant;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class BOEntityMapper {
     public Offer toOffer(OfferBO offerBO) {
         List<Block> blocks = offerBO.blocks().stream().map(block -> toBlock(block)).collect(Collectors.toList());

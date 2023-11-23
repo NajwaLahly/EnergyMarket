@@ -32,6 +32,8 @@ public class Block {
         this.price = price;
     }
 
+    public Block(){}
+
     public UUID getBlockId() {
         return blockId;
     }

@@ -24,6 +24,7 @@ public class Plant {
         this.name = name;
     }
 
+    public Plant(){}
     public void setId(UUID id) {
         this.id = id;
     }

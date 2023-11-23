@@ -6,10 +6,12 @@ import com.example.energymarket.domain.pojo.PlantBO;
 import com.example.energymarket.presentation.dto.BlockDto;
 import com.example.energymarket.presentation.dto.OfferDto;
 import com.example.energymarket.presentation.dto.PlantDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class BODtoMapper {
     public OfferBO toOfferBO(OfferDto offerDto) {
         List<BlockBO> blocksBO = offerDto.blocks().stream().map(block -> toBlockBO(block)).collect(Collectors.toList());
