@@ -3,7 +3,11 @@
 Agregio can place offers on 3 markets, each consisting of multiple hourly "blocks" (a day with 24 hours may contain 8 blocks of 3 hours each). Each block specifies the quantity of energy (in MW) to be produced and a minimum price for selling.
 Different types of power plants (solar, wind, or hydro) can provide a certain number of megawatts during a block.
 
-##APIs
+## Technology Stack
+- Java 17
+- Spring Boot 3.1.5
+
+## APIs
 This code implements 4 Apis defined by the following endpoints:
 1. **Create Offer API:**
    - Endpoint: `/offers`
