@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface PlantPersistencePort {
     PlantBO add(PlantBO plantBO);
-    List<PlantBO> findByMarket(Market market);
 }
