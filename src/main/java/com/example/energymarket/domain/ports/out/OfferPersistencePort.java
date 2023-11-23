@@ -1,4 +1,11 @@
 package com.example.energymarket.domain.ports.out;
 
-public class OfferPersistencePort {
+import com.example.energymarket.domain.pojo.Market;
+import com.example.energymarket.domain.pojo.OfferBO;
+
+import java.util.List;
+
+public interface OfferPersistencePort {
+    OfferBO add(OfferBO offerBO);
+    List<OfferBO> findByMarket(Market market);
 }
