@@ -5,11 +5,13 @@ import com.example.energymarket.domain.pojo.PlantBO;
 import com.example.energymarket.domain.pojo.PlantType;
 import com.example.energymarket.domain.ports.out.OfferPersistencePort;
 import com.example.energymarket.domain.ports.out.PlantPersistencePort;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class PlantServiceTest {
 
     @InjectMocks
@@ -29,6 +31,7 @@ public class PlantServiceTest {
     @Mock
     OfferPersistencePort offerRepository;
 
+
     @Test
     @DisplayName("should call repository to add new plant")
     void shouldAdd() {
@@ -37,7 +40,7 @@ public class PlantServiceTest {
         when(plantRepository.add(plant)).thenReturn(plant);
 
         //Act
-        plantRepository.add(plant);
+        plantService.add(plant);
 
         //Assert
         verify(plantRepository, times(1)).add(plant);
@@ -48,6 +51,7 @@ public class PlantServiceTest {
     @DisplayName("should call repository to get all plants that sell in a market")
     void shouldFindByMarket() {
         //Arrange
+        PlantService plantService = new PlantService(plantRepository, offerRepository);
         List<PlantBO> primaryMarketPlants = List.of(new PlantBO("plant-1", PlantType.SOLAR));
         when(offerRepository.findDistinctPlantsByMarket(Market.PRIMARY)).thenReturn(primaryMarketPlants);
 

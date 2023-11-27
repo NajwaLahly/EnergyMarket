@@ -5,6 +5,7 @@ import com.example.energymarket.domain.pojo.OfferBO;
 import com.example.energymarket.domain.ports.in.OfferServicePort;
 import com.example.energymarket.presentation.adapter.BODtoMapper;
 import com.example.energymarket.presentation.dto.OfferDto;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class OfferController {
         return ResponseEntity.status(HttpStatus.CREATED).body(boDtoMapper.toOfferDto(postedOffer));
     }
 
-    @GetMapping("/{market}")
-    public ResponseEntity<List<OfferDto>> findByMarket(@PathVariable("market") Market market) {
+    @GetMapping
+    public ResponseEntity<List<OfferDto>> findByMarket(@PathParam("market") Market market) {
         List<OfferDto> marketOffers = offerService.findByMarket(market)
                 .stream()
                 .map(offer -> boDtoMapper.toOfferDto(offer))

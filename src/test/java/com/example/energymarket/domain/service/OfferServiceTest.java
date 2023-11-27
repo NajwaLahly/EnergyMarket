@@ -7,9 +7,10 @@ import com.example.energymarket.domain.pojo.OfferBO;
 import com.example.energymarket.domain.ports.out.OfferPersistencePort;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class OfferServiceTest {
 
     @InjectMocks
