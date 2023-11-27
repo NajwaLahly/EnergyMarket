@@ -5,7 +5,6 @@ import com.example.energymarket.domain.pojo.PlantBO;
 import com.example.energymarket.domain.ports.in.PlantServicePort;
 import com.example.energymarket.presentation.adapter.BODtoMapper;
 import com.example.energymarket.presentation.dto.PlantDto;
-import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,7 @@ public class PlantController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PlantDto>> findByMarket(@PathParam("market") Market market) {
+    public ResponseEntity<List<PlantDto>> findByMarket(@RequestParam("market") Market market) {
         List<PlantDto> marketPlants = plantService.findByMarket(market)
                 .stream()
                 .map(plant -> boDtoMapper.toPlantDto(plant))
